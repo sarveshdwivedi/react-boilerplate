@@ -11,28 +11,24 @@ const customContentStyle = {
 /*
  * Edit User modal dialogue
  */
-
-class EditUser extends React.Component {
-
-  render() {
-    return (
+const EditUser = ({ username, name, email,openModal,cancelModal,updateUsers,getValues }) =>(
       <Dialog
         title="Update User Details"
         actions={[
           <FlatButton
             label="Cancel"
             primary={true}
-            onClick={this.props.cancelModal}
+            onClick={cancelModal}
           />,
           <FlatButton
             label="Submit"
             primary={true}
-            onClick={this.props.updateUsers}
+            onClick={updateUsers}
           />,
         ]}
         modal={true}
         contentStyle={customContentStyle}
-        open={this.props.openModal}
+        open={openModal}
       >
         <div>
           <form >
@@ -41,8 +37,8 @@ class EditUser extends React.Component {
                 floatingLabelText={"Name"}
                 fullWidth={true}
                 name="name"
-                value={this.props.name}
-                onChange={(e) => { this.props.getValues(e) }}
+                value={name}
+                onChange={(e) => { getValues(e) }}
               />
             </div>
             <div>
@@ -50,8 +46,8 @@ class EditUser extends React.Component {
                 floatingLabelText={"Username"}
                 fullWidth={true}
                 name="username"
-                value={this.props.username}
-                onChange={(e) => { this.props.getValues(e) }}
+                value={username}
+                onChange={(e) => { getValues(e) }}
               />
             </div>
             <div>
@@ -59,14 +55,12 @@ class EditUser extends React.Component {
                 floatingLabelText={"Email"}
                 fullWidth={true}
                 name="email"
-                value={this.props.email}
-                onChange={(e) => { this.props.getValues(e) }}
+                value={email}
+                onChange={(e) => { getValues(e) }}
               />
             </div>
           </form >
         </div>
       </Dialog>
     );
-  }
-}
 export default EditUser;
